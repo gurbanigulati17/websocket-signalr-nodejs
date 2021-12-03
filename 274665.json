@@ -1,0 +1,52 @@
+{
+    "mi": 274665,
+    "ms": 1,
+    "tm": 4137387.11,
+    "events": [
+        {
+            "SelectionId": 414464,
+            "BackPrice1": 1.38,
+            "BackSize1": 17068,
+            "BackPrice2": 1.37,
+            "BackSize2": 4393,
+            "BackPrice3": 0,
+            "BackSize3": 0,
+            "LayPrice1": 1.4,
+            "LaySize1": 7685,
+            "LayPrice2": 1.42,
+            "LaySize2": 7780,
+            "LayPrice3": 0,
+            "LaySize3": 0
+        },
+        {
+            "SelectionId": 448,
+            "BackPrice1": 12,
+            "BackSize1": 1389,
+            "BackPrice2": 11.5,
+            "BackSize2": 1263,
+            "BackPrice3": 11,
+            "BackSize3": 763,
+            "LayPrice1": 12.5,
+            "LaySize1": 922,
+            "LayPrice2": 13,
+            "LaySize2": 2140,
+            "LayPrice3": 13.5,
+            "LaySize3": 1112
+        },
+        {
+            "SelectionId": 60443,
+            "BackPrice1": 4.9,
+            "BackSize1": 2300,
+            "BackPrice2": 4.8,
+            "BackSize2": 3856,
+            "BackPrice3": 4.7,
+            "BackSize3": 1643,
+            "LayPrice1": 5,
+            "LaySize1": 1114,
+            "LayPrice2": 5.1,
+            "LaySize2": 4409,
+            "LayPrice3": 5.2,
+            "LaySize3": 1724
+        }
+    ]
+}
