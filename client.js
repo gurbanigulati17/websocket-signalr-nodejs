@@ -1,10 +1,18 @@
 var express = require('express');
 var app = express();
 var fs = require("fs");
+const colors = require('colors');
 const signalR = require("@microsoft/signalr");
+const { type } = require('os');
+
 
 var vUri = "http://a112.thebetmarket.com/SignalR";
 
+
+function renameKey ( obj, oldKey, newKey ) {
+    obj[newKey] = obj[oldKey];
+    delete obj[oldKey];
+}
 
 app.get('/', function (request, response) {
 
@@ -16,22 +24,39 @@ app.get('/', function (request, response) {
 
 
     connection.on('Rate', function (marketrate) {
+        
+       const data = JSON.stringify(marketrate,null, 4);
+       response.write(data);
 
-        const data = JSON.stringify(marketrate,null, 4);
-        response.write(data);
-
+       const marketData = marketrate;
+    
         try {
-            fs.writeFileSync('output.json', data);
-            console.log("JSON data is saved.");
+            
+            fs.writeFileSync(marketrate["mi"]+'.json', JSON.stringify(marketData,null, 4));
+            console.log(`${marketrate["mi"]} JSON data is saved.`.green);
+
         } catch (error) {
-            console.error(err);
+            console.error(error);
         }
 
     });
 
 
     connection.start()
-        .then(() => connection.invoke('ConnectMarketRate', "273205"))
+        .then(function (vobj){
+
+            fs.readFile('input.json', (err, data) => {
+                
+                if (err) throw err;
+                
+                let marketIds = JSON.parse(data);
+                
+                for(var id in marketIds){
+                    connection.invoke('ConnectMarketRate', marketIds[id]['pmid']);
+                }               
+
+            });
+        })
         .catch(error => {
             console.error(error.message);
         });
